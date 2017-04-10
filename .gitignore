@@ -1,0 +1,4 @@
+dist
+*.jar
+*.hi
+.idea

@@ -31,5 +31,6 @@ library
                        MultiParamTypeClasses
                        FlexibleContexts
                        RankNTypes
+                       IncoherentInstances
                        AllowAmbiguousTypes
                        ScopedTypeVariables

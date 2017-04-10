@@ -1,3 +1,5 @@
+{-# LANGUAGE IncoherentInstances #-}
+
 module Spark.SQL.Internal.Dataset where
 
 import Java

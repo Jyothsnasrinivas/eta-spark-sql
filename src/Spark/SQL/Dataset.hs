@@ -1,4 +1,5 @@
 {-# LANGUAGE IncoherentInstances #-}
+
 module Spark.SQL.Dataset where
 
 import Java
@@ -81,7 +82,7 @@ foreign import java unsafe cube:: (t <: Object) => ColumnArray -> Java (Dataset 
 --                                  => JString -> Seq Column -> Java (Dataset t) (RelationalGroupedDataset)
 
 cube2 :: (t <: Object) => String -> [String] -> Java (Dataset t) (RelationalGroupedDataset)
-cube2 t1 t2 = S.cube2 t1 (toJava $ map toJava t2)
+cube2 t1 t2 = S.cube2 t1 (toJava $ (map toJava t2 :: [JString]))
 
 -- foreign import java unsafe cube4 :: (t <: Object)
 --                                  => JString -> JStringArray -> Java (Dataset t) (RelationalGroupedDataset)
@@ -97,7 +98,7 @@ foreign import java unsafe drop :: (t <: Object) => Column -> Java (Dataset t) (
 -- foreign import java unsafe drop2 :: (t <: Object) => Seq JString -> Java (Dataset t) (Dataset row)
 
 drop2 :: (t <: Object) => [String] -> Java (Dataset t) (Dataset row)
-drop2 t = S.drop2 (toJava $ map toJava t)
+drop2 t = S.drop2 (toJava $ (map toJava t :: [JString]))
 
 --foreign import java unsafe drop3 :: (t <: Object) => JStringArray -> Java (Dataset t) (Dataset row)
 
@@ -115,8 +116,8 @@ foreign import java unsafe dropDuplicates :: (t <: Object) => Java (Dataset t) (
 -- foreign import java unsafe dropDuplicates4 :: (t <: Object)
 --                                           => JString -> Seq JString -> Java (Dataset t) (Dataset t)
 
-dropDuplicates3 :: (t <: Object) => [String] -> Java (Dataset t) (Dataset t)
-dropDuplicates3 t1 t2 = S.dropDuplicates3 t1 (toJava map toJava t2)
+dropDuplicates3 :: (t <: Object) => String -> [String] -> Java (Dataset t) (Dataset t)
+dropDuplicates3 t1 t2 = S.dropDuplicates3 t1 (toJava (map toJava t2 :: [JString]))
 
 -- foreign import java unsafe dropDuplicates5 :: (t <: Object)
 --                                            => JString -> JStringArray -> Java (Dataset t) (Dataset t)
@@ -257,7 +258,7 @@ foreign import java unsafe orderBy :: (t <: Object) => ColumnArray -> Java (Data
 -- foreign import java unsafe orderBy3 :: (t <: Object) => JString -> Seq Column -> Java (Dataset t) (Dataset t)
 
 orderBy2 :: (t <: Object) => String -> [String] -> Java (Dataset t) (Dataset t)
-orderBy2 t1 t2 = S.orderBy2 t1 (toJava $ map toJava t2)
+orderBy2 t1 t2 = S.orderBy2 t1 (toJava $ (map toJava t2 :: [JString]))
 
 --foreign import java unsafe orderBy4 :: (t <: Object) => JString -> JStringArray -> Java (Dataset t) (Dataset t)
 
@@ -324,7 +325,7 @@ rollup t = S.rollup (toJava t)
 -- foreign import java unsafe rollup3 :: (t <: Object) => JString -> Seq Column -> Java (Dataset t) (RelationalGroupedDataset)
 
 rollup2 :: (t <: Object) => String -> [String] -> Java (Dataset t) (RelationalGroupedDataset)
-rollup2 t1 t2 = S.rollup2 t1 (toJava $ map toJava t2)
+rollup2 t1 t2 = S.rollup2 t1 (toJava $ (map toJava t2 :: [JString]))
 
 --foreign import java unsafe rollup4 :: (t <: Object) => JString -> JStringArray -> Java (Dataset t) (RelationalGroupedDataset)
 
@@ -346,7 +347,7 @@ select t = S.select (toJava t)
 -- foreign import java unsafe select3 :: (t <: Object) => JString -> Seq JString -> Java (Dataset t) (Dataset row)
 
 select2 :: (t <: Object) => String -> [String] -> Java (Dataset t) (Dataset row)
-select2 t1 t2 = S.select2 t1 (toJava $ map toJava t2)
+select2 t1 t2 = S.select2 t1 (toJava $ (map toJava t2 :: [JString]))
 
 --foreign import java unsafe select4 :: (t <: Object) => JString -> JStringArray -> Java (Dataset t) (Dataset row)
 
@@ -392,7 +393,7 @@ sort t = S.sort (toJava t)
 -- foreign import java unsafe sort3 :: (t <: Object) => JString -> Seq JString -> Java (Dataset t) (Dataset t)
 
 sort2 :: (t <: Object) => String -> [String] -> Java (Dataset t) (Dataset t)
-sort2 t1 t2 = S.sort2 t1 (toJava $ map toJava t2)
+sort2 t1 t2 = S.sort2 t1 (toJava $ (map toJava t2 :: [JString]))
 
 --foreign import java unsafe sort4 :: (t <: Object) => JString -> JStringArray -> Java (Dataset t) (Dataset t)
 
@@ -408,7 +409,7 @@ sortWithinPartitions t = S.sortWithinPartitions (toJava t)
 
 sortWithinPartitions2 :: (t <: Object)
                      => String -> [String] -> Java (Dataset t) (Dataset t)
-sortWithinPartitions2 t1 t2 = S.sortWithinPartitions2 t1 (toJava $ map toJava t2)
+sortWithinPartitions2 t1 t2 = S.sortWithinPartitions2 t1 (toJava $ (map toJava t2 :: [JString]))
 
 -- foreign import java unsafe sortWithinPartitions4 :: (t <: Object)
 --                                                  => JString -> JStringArray -> Java (Dataset t) (Dataset t)
@@ -430,7 +431,7 @@ foreign import java unsafe toDF :: (t <: Object) => Java (Dataset t) (Dataset ro
 -- foreign import java unsafe toDF2 :: (t <: Object) => Seq JString -> Java (Dataset t) (Dataset row)
 
 toDF2 :: (t <: Object) => [String] -> Java (Dataset t) (Dataset row)
-toDF2 t = S.toDF2 (toJava $ map toJava t)
+toDF2 t = S.toDF2 (toJava $ (map toJava t :: [JString]))
 
 --foreign import java unsafe toDF3 :: (t <: Object) => JStringArray -> Java (Dataset t) (Dataset row)
 
